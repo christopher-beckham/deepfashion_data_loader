@@ -48,8 +48,6 @@ class DeepFashionDataset(Dataset):
             self.filenames[i] = filename
             self.attrs[i] = attr
             i += 1
-            if i == 100:
-                break
         f.close()
 
     def get_list_category_img(self):
@@ -67,8 +65,6 @@ class DeepFashionDataset(Dataset):
             category = int(line[-1])
             self.categories[i] = category
             i += 1
-            if i == 100:
-                break
         f.close()
 
     def __getitem__(self, index):
@@ -90,7 +86,4 @@ if __name__ == '__main__':
     ]
     ds = DeepFashionDataset(root, transforms_=train_transforms)
     loader = DataLoader(ds, batch_size=10, shuffle=False)
-    stuff = iter(loader).next()
-    import pdb
-    pdb.set_trace()
-    
+    stuff = iter(loader).next()    
